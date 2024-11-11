@@ -21,10 +21,11 @@ public class ToggleWristMenu : MonoBehaviour
 
     private void OnDestroy()
     {
+        menu.Disable();
         menu.performed -= ToggleMenu;
     }
     
-    public void ToggleMenu(InputAction.CallbackContext wristCallbackContext)
+    public void ToggleMenu(InputAction.CallbackContext context)
     {
         wristMenuCanvas.enabled = !wristMenuCanvas.enabled;
     }
