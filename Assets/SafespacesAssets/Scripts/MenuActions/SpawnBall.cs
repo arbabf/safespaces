@@ -19,7 +19,7 @@ public class SpawnBall : MonoBehaviour
 
     public void CreateBall()
     {
-        Rigidbody newBall = Instantiate(ball, new Vector3(-4, 2, 27), Quaternion.identity).GetComponent<Rigidbody>();
+        Rigidbody newBall = Instantiate(ball, new Vector3(-4, 2, 27), Quaternion.identity).transform.GetChild(0).GetComponent<Rigidbody>();
         newBall.AddForce(Random.Range(-VELOCITY, VELOCITY), Random.Range(-VELOCITY, VELOCITY), Random.Range(-VELOCITY, VELOCITY), ForceMode.VelocityChange);
     }
 }
