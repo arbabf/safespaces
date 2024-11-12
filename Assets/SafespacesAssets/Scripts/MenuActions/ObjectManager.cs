@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -10,10 +11,8 @@ public class ObjectManager : MonoBehaviour
     private InputActionMap normalMap;
     private InputActionMap objectMap;
     private InputAction objectAction;
+    private ObjectSpawner objSpawner;
     
-
-    public GameObject ballTemplate;
-    public GameObject blockTemplate;
     public XRRayInteractor interactor;
 
     bool objectModeEnabled = false;
@@ -21,12 +20,11 @@ public class ObjectManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        selectedObject = ballTemplate;
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
         normalMap = inputActions.FindActionMap("XRI Left Interaction");
         objectMap = inputActions.FindActionMap("XRI Left Interaction (Object Mode)");
-
         objectAction = objectMap.FindAction("CreateObject");
+        objSpawner = gameObject.GetComponent<ObjectSpawner>();
     }
 
     private void OnDestroy()
@@ -38,12 +36,14 @@ public class ObjectManager : MonoBehaviour
     // create an object at wherever our left controller is pointing
     public void CreateObject(InputAction.CallbackContext context)
     {
+        selectedObject = objSpawner.objectPrefabs[0]; // probs change this if the user wants random spawns
+
         interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
         Vector3 spawnLocation = raycast.point;
         // move our object back so it doesn't spawn inside a collider
         Vector3 extents = selectedObject.GetComponent<Collider>().bounds.extents;
         spawnLocation += raycast.normal.Multiply(extents);
-        Instantiate(selectedObject, spawnLocation, Quaternion.LookRotation(raycast.normal));
+        objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
     }
 
     public void ToggleObjectMode()
