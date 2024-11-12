@@ -15,7 +15,7 @@ public class ObjectManager : MonoBehaviour
     
     public XRRayInteractor interactor;
 
-    bool objectModeEnabled = false;
+    int objIndex = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,14 +29,15 @@ public class ObjectManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (objectModeEnabled)
-            ToggleObjectMode();
+        if (objIndex > -1)
+            DisableObjectMode();
     }
 
     // create an object at wherever our left controller is pointing
     public void CreateObject(InputAction.CallbackContext context)
     {
-        selectedObject = objSpawner.objectPrefabs[0]; // probs change this if the user wants random spawns
+        selectedObject = objSpawner.objectPrefabs[objIndex]; // probs change this if the user wants random spawns
+        objSpawner.spawnOptionIndex = objIndex;
 
         interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
         Vector3 spawnLocation = raycast.point;
@@ -46,21 +47,35 @@ public class ObjectManager : MonoBehaviour
         objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
     }
 
-    public void ToggleObjectMode()
+    public void EnableObjectMode()
     {
-        objectModeEnabled = !objectModeEnabled;
-        Debug.Log(objectModeEnabled);
-        if (!objectModeEnabled)
+        normalMap.Disable();
+        objectMap.Enable();
+        objectAction.performed += CreateObject;
+    }
+
+    public void DisableObjectMode()
+    {
+        normalMap.Enable();
+        objectMap.Disable();
+        objectAction.performed -= CreateObject;
+    }
+
+    public void HandleObjectMode()
+    {
+        objIndex += 1;
+        if (objIndex >= objSpawner.objectPrefabs.Count)
         {
-            normalMap.Enable();
-            objectMap.Disable();
-            objectAction.performed -= CreateObject;
+            objIndex = -1;
+        }
+        Debug.Log(objIndex);
+        if (objIndex == -1)
+        {
+            DisableObjectMode();
         }
         else
         {
-            normalMap.Disable();
-            objectMap.Enable();
-            objectAction.performed += CreateObject;
+            EnableObjectMode();
         }
     }
 }
