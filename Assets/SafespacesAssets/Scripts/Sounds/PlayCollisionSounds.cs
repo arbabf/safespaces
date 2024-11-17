@@ -11,7 +11,7 @@ public class BounceSound : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        audioSource.volume = collision.relativeVelocity.magnitude / 10;
+        audioSource.volume = collision.relativeVelocity.magnitude / 20;
         audioSource.Play();
     }
 }
