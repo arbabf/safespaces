@@ -8,8 +8,6 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 public class ObjectManager : MonoBehaviour
 {
     private GameObject selectedObject;
-    private InputActionMap normalMap;
-    private InputActionMap objectMap;
     private InputAction objectAction;
     private ObjectSpawner objSpawner;
     
@@ -21,16 +19,13 @@ public class ObjectManager : MonoBehaviour
     void Start()
     {
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
-        normalMap = inputActions.FindActionMap("XRI Left Interaction");
-        objectMap = inputActions.FindActionMap("XRI Left Interaction (Object Mode)");
-        objectAction = objectMap.FindAction("CreateObject");
+        objectAction.performed += CreateObject;
         objSpawner = gameObject.GetComponent<ObjectSpawner>();
     }
 
     private void OnDestroy()
     {
-        if (objIndex > -1)
-            DisableObjectMode();
+        objectAction.performed -= CreateObject;
     }
 
     // create an object at wherever our left controller is pointing
@@ -46,21 +41,6 @@ public class ObjectManager : MonoBehaviour
         spawnLocation += raycast.normal.Multiply(extents);
         objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
     }
-
-    public void EnableObjectMode()
-    {
-        normalMap.Disable();
-        objectMap.Enable();
-        objectAction.performed += CreateObject;
-    }
-
-    public void DisableObjectMode()
-    {
-        normalMap.Enable();
-        objectMap.Disable();
-        objectAction.performed -= CreateObject;
-    }
-
     public void HandleObjectMode()
     {
         objIndex += 1;
@@ -69,13 +49,5 @@ public class ObjectManager : MonoBehaviour
             objIndex = -1;
         }
         Debug.Log(objIndex);
-        if (objIndex == -1)
-        {
-            DisableObjectMode();
-        }
-        else
-        {
-            EnableObjectMode();
-        }
     }
 }
