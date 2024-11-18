@@ -20,21 +20,25 @@ public class MenuManager : MonoBehaviour
     {
         colourManager.ToggleColourPicker();
         objectManager.DisableObjectMode();
+        bubbleManager.DisableBubbleMode();
     }
 
     public void HandleSoundMenu()
     {
-        ambientSoundManager.PlayAudioSource("aa");
+        //ambientSoundManager.PlayAudioSource("aa");
     }
 
     public void HandleObjectMenu()
     {
         objectManager.HandleObjectMode();
         colourManager.DisableColourPicker();
+        bubbleManager.DisableBubbleMode();
     }
 
     public void HandleBubbleMode()
     {
-        bubbleManager.CreateBubble();
+        bubbleManager.ToggleBubbleMode();
+        colourManager.DisableColourPicker();
+        objectManager.DisableObjectMode();
     }
 }

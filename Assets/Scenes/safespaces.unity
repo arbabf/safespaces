@@ -276,6 +276,11 @@ Transform:
   - {fileID: 1007210386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &565049768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 202364687, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1312581757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &570561678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3937670157488969217, guid: be8879b0049d7354d9970da8242f5fcc, type: 3}
@@ -2870,6 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 3937670158139012260}
+  controller: {fileID: 565049768}
 --- !u!1 &3937670158139012260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4938424397734109687, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
@@ -3506,14 +3512,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3725312276225842857, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3725312276225842857, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3725312276225842857, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
       propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388433195406912333, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4938424397734109687, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
