@@ -19,13 +19,13 @@ public class ObjectManager : MonoBehaviour
     void Start()
     {
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
-        objectAction.performed += CreateObject;
+        objectAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Activate");
         objSpawner = gameObject.GetComponent<ObjectSpawner>();
     }
 
     private void OnDestroy()
     {
-        objectAction.performed -= CreateObject;
+        DisableObjectMode();
     }
 
     // create an object at wherever our left controller is pointing
@@ -41,13 +41,21 @@ public class ObjectManager : MonoBehaviour
         spawnLocation += raycast.normal.Multiply(extents);
         objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
     }
+
     public void HandleObjectMode()
     {
         objIndex += 1;
         if (objIndex >= objSpawner.objectPrefabs.Count)
         {
-            objIndex = -1;
+            DisableObjectMode();
         }
+        objectAction.performed += CreateObject;
         Debug.Log(objIndex);
+    }
+
+    public void DisableObjectMode()
+    {
+        objIndex = -1;
+        objectAction.performed -= CreateObject;
     }
 }

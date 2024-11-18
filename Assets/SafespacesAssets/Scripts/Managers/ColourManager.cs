@@ -20,4 +20,9 @@ public class ColourManager : MonoBehaviour
     {
         colourPicker.SetActive(!colourPicker.activeSelf);
     }
+
+    public void DisableColourPicker()
+    {
+        colourPicker.SetActive(false);
+    }
 }

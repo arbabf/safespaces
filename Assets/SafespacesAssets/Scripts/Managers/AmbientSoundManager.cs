@@ -21,13 +21,13 @@ public class AmbientSoundManager : MonoBehaviour
     // The better way would be to link each AudioSource child in our prefab to an element in an array, and link our buttons
     // to that array.
     // For now, as a PoC, this is fine.
-    void PlayAudioSource(string sourceName)
+    public void PlayAudioSource(string sourceName)
     {
         AudioSource source = transform.Find("AmbientFan").GetComponent<AudioSource>();
         source.Play();
     }
 
-    void StopAudioSource(string sourceName)
+    public void StopAudioSource(string sourceName)
     {
 
     }
