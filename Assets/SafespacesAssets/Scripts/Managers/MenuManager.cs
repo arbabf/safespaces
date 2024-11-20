@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
 
     public void HandleObjectMenu()
     {
-        objectManager.HandleObjectMode();
+        objectManager.ToggleObjectMode();
         colourManager.DisableColourPicker();
         bubbleManager.DisableBubbleMode();
     }

@@ -12,7 +12,9 @@ public class ObjectManager : MonoBehaviour
     private ObjectSpawner objSpawner;
     
     public XRRayInteractor interactor;
+    public GameObject objectMenu;
 
+    bool objectMenuEnabled = false;
     int objIndex = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +23,7 @@ public class ObjectManager : MonoBehaviour
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
         objectAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Activate");
         objSpawner = gameObject.GetComponent<ObjectSpawner>();
+        objectMenu.SetActive(false);
     }
 
     private void OnDestroy()
@@ -31,6 +34,9 @@ public class ObjectManager : MonoBehaviour
     // create an object at wherever our left controller is pointing
     public void CreateObject(InputAction.CallbackContext context)
     {
+        if (objIndex < 0 || objIndex >= objSpawner.objectPrefabs.Count)
+            return;
+
         selectedObject = objSpawner.objectPrefabs[objIndex]; // probs change this if the user wants random spawns
         objSpawner.spawnOptionIndex = objIndex;
 
@@ -42,20 +48,31 @@ public class ObjectManager : MonoBehaviour
         objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
     }
 
-    public void HandleObjectMode()
+    public void ToggleObjectMode()
     {
-        objIndex += 1;
-        if (objIndex >= objSpawner.objectPrefabs.Count)
-        {
+        if (objectMenuEnabled)
             DisableObjectMode();
-        }
+        else
+            EnableObjectMode();
+    }
+
+    public void EnableObjectMode()
+    {
+        objectMenuEnabled = true;
+        objectMenu.SetActive(true);
         objectAction.performed += CreateObject;
-        Debug.Log(objIndex);
     }
 
     public void DisableObjectMode()
     {
+        objectMenuEnabled = false;
+        objectMenu.SetActive(false);
         objIndex = -1;
         objectAction.performed -= CreateObject;
+    }
+
+    public void SetObjectIndex(int index)
+    {
+        objIndex = index;
     }
 }
