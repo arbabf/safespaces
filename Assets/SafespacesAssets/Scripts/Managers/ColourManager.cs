@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ColourManager : MonoBehaviour
 {
     public GameObject colourPicker;
+    public Outline buttonOutline;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,11 +20,21 @@ public class ColourManager : MonoBehaviour
 
     public void ToggleColourPicker()
     {
-        colourPicker.SetActive(!colourPicker.activeSelf);
+        if (colourPicker.activeSelf)
+            DisableColourPicker();
+        else
+            EnableColourPicker();
+    }
+
+    public void EnableColourPicker()
+    {
+        colourPicker.SetActive(true);
+        buttonOutline.enabled = true;
     }
 
     public void DisableColourPicker()
     {
         colourPicker.SetActive(false);
+        buttonOutline.enabled = false;
     }
 }

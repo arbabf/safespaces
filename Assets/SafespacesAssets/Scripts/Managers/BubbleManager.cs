@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class BubbleManager : MonoBehaviour
 {
     public GameObject bubble;
     public GameObject controller;
+    public Outline buttonOutline;
 
     private InputAction bubbleAction;
     private Transform bubbleLaunchOrigin;
     private bool bubbleModeEnabled = false;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,18 +42,18 @@ public class BubbleManager : MonoBehaviour
 
     public void ToggleBubbleMode()
     {
-        bubbleModeEnabled = !bubbleModeEnabled;
         if (bubbleModeEnabled)
-        {
-            bubbleAction.performed += StartBubbleStream;
-            bubbleAction.canceled += StopBubbleStream;
-        }
+            DisableBubbleMode();
         else
-        {
-            bubbleAction.performed -= StartBubbleStream;
-            bubbleAction.canceled -= StopBubbleStream;
-        }
-        Debug.Log(bubbleModeEnabled);
+            EnableBubbleMode();
+    }
+
+    public void EnableBubbleMode()
+    {
+        bubbleModeEnabled = true;
+        bubbleAction.performed += StartBubbleStream;
+        bubbleAction.canceled += StopBubbleStream;
+        buttonOutline.enabled = true;
     }
 
     public void DisableBubbleMode()
@@ -58,5 +61,6 @@ public class BubbleManager : MonoBehaviour
         bubbleModeEnabled = false;
         bubbleAction.performed -= StartBubbleStream;
         bubbleAction.canceled -= StopBubbleStream;
+        buttonOutline.enabled = false;
     }
 }

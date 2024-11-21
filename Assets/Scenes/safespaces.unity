@@ -669,6 +669,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &641934727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1318625806254205239, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1312581757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &741736466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1088,6 +1099,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+--- !u!114 &960539438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6292741699434671697, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1312581757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007210385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1328,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226251749}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1286531116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1589489659474412391, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1312581757}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1309466507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4992873204582907952, guid: 02b349454a025bb4b8a440cb87fca292, type: 3}
@@ -1425,6 +1458,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1318625806254205239, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1661602689736709481, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1489,6 +1526,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 4.24
       objectReference: {fileID: 0}
+    - target: {fileID: 2614493707757265859, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2670340151069971288, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1512,6 +1553,18 @@ PrefabInstance:
     - target: {fileID: 2670340151069971288, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816678319284749237, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816678319284749237, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816678319284749237, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2910021987144570526, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2953,6 +3006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble: {fileID: 3937670158139012260}
   controller: {fileID: 565049768}
+  buttonOutline: {fileID: 641934727}
 --- !u!1 &3937670158139012260 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4938424397734109687, guid: f43c3e00d8be0fc4eb97a0f576942ce7, type: 3}
@@ -3513,6 +3567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactor: {fileID: 779857327}
   objectMenu: {fileID: 555719264}
+  buttonOutline: {fileID: 960539438}
 --- !u!114 &6701071099498778919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,6 +3793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colourPicker: {fileID: 1663288795}
+  buttonOutline: {fileID: 1286531116}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
+using System;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
@@ -13,6 +15,7 @@ public class ObjectManager : MonoBehaviour
     
     public XRRayInteractor interactor;
     public GameObject objectMenu;
+    public Outline buttonOutline;
 
     bool objectMenuEnabled = false;
     int objIndex = -1;
@@ -61,6 +64,7 @@ public class ObjectManager : MonoBehaviour
         objectMenuEnabled = true;
         objectMenu.SetActive(true);
         objectAction.performed += CreateObject;
+        buttonOutline.enabled = true;
     }
 
     public void DisableObjectMode()
@@ -69,10 +73,24 @@ public class ObjectManager : MonoBehaviour
         objectMenu.SetActive(false);
         objIndex = -1;
         objectAction.performed -= CreateObject;
+        buttonOutline.enabled = false;
+
+        // disable all outlines
+        for (int i = 1; i < objectMenu.transform.childCount; i++)
+        {
+            objectMenu.transform.GetChild(i).GetComponent<Outline>().enabled = false;
+        }
     }
 
     public void SetObjectIndex(int index)
     {
+        // set outline
+        if (objIndex != -1)
+        {
+            objectMenu.transform.GetChild(objIndex + 1).GetComponent<Outline>().enabled = false;
+        }
+        objectMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = true;
+
         objIndex = index;
     }
 }
