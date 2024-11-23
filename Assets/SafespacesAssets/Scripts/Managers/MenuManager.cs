@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         colourManager = GameObject.Find("ColourManager").GetComponent<ColourManager>();
-        ambientSoundManager = GameObject.Find("AmbientSounds").GetComponent<AmbientSoundManager>();
+        ambientSoundManager = GameObject.Find("AmbientSoundManager").GetComponent<AmbientSoundManager>();
         objectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
         bubbleManager = GameObject.Find("BubbleManager").GetComponent<BubbleManager>();
     }
@@ -19,19 +19,24 @@ public class MenuManager : MonoBehaviour
     public void HandleColourMenu()
     {
         colourManager.ToggleColourPicker();
+        ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
         bubbleManager.DisableBubbleMode();
     }
 
     public void HandleSoundMenu()
     {
-        //ambientSoundManager.PlayAudioSource("aa");
+        ambientSoundManager.ToggleMenu();
+        colourManager.DisableColourPicker();
+        objectManager.DisableObjectMode();
+        bubbleManager.DisableBubbleMode();
     }
 
     public void HandleObjectMenu()
     {
         objectManager.ToggleObjectMode();
         colourManager.DisableColourPicker();
+        ambientSoundManager.DisableMenu();
         bubbleManager.DisableBubbleMode();
     }
 
@@ -39,6 +44,7 @@ public class MenuManager : MonoBehaviour
     {
         bubbleManager.ToggleBubbleMode();
         colourManager.DisableColourPicker();
+        ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
     }
 }

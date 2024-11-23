@@ -1,34 +1,104 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AmbientSoundManager : MonoBehaviour
 {
-    public Button[] soundButtons;
+    public GameObject soundMenu;
+    public GameObject volumeSliderMenu;
+    public Outline buttonOutline;
+    public AudioSource[] sounds;
+    public Slider volumeSlider;
+
+    private AudioSource selectedSound;
+    private int selectedIndex;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        soundButtons[0].onClick.AddListener(delegate { PlayAudioSource("e"); });
+        selectedSound = null;
+        selectedIndex = -1;
+        soundMenu.SetActive(false);
+        volumeSliderMenu.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleMenu()
     {
-        
+        if (soundMenu.activeSelf)
+            DisableMenu();
+        else
+            EnableMenu();
     }
 
-    // TODO: we already have all our AudioSources that exist and all that; we do not need to find an AudioSource by name.
-    // The better way would be to link each AudioSource child in our prefab to an element in an array, and link our buttons
-    // to that array.
-    // For now, as a PoC, this is fine.
-    public void PlayAudioSource(string sourceName)
+    public void EnableMenu()
     {
-        AudioSource source = transform.Find("AmbientFan").GetComponent<AudioSource>();
-        source.Play();
+        soundMenu.SetActive(true);
+        buttonOutline.enabled = true;
     }
 
-    public void StopAudioSource(string sourceName)
+    public void DisableMenu()
     {
+        soundMenu.SetActive(false);
+        volumeSliderMenu.SetActive(false);
 
+        // deselect our sound
+        if (selectedIndex != -1)
+            soundMenu.transform.GetChild(selectedIndex + 1).GetComponent<Outline>().effectColor = SafespacesUtils.cyan;
+        selectedSound = null;
+        selectedIndex = -1;
+
+        buttonOutline.enabled = false;
+    }
+
+    /*
+     * There's probably a better way to handle both toggling an AudioSource
+     * and its respective Button, but I can't really think of one right now.
+     */
+    public void ToggleSound(int index)
+    {
+        bool soundEnabled = sounds[index].isPlaying;
+        if (soundEnabled && index == selectedIndex)
+        {
+            // double click a sound button to disable it
+            selectedSound.Stop();
+            selectedSound = null;
+            selectedIndex = -1;
+            volumeSliderMenu.SetActive(false);
+            soundMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = false;
+        }
+        else
+        {
+            // otherwise play it/bring up its menu
+            selectedSound = sounds[index];
+            if (!soundEnabled)
+            {
+                selectedSound.Play();
+            }
+            selectedIndex = index;
+
+            // open up and pre-set the volume slider
+            volumeSliderMenu.SetActive(true);
+            volumeSlider.value = selectedSound.volume;
+
+            Outline o = soundMenu.transform.GetChild(index + 1).GetComponent<Outline>();
+            o.enabled = true;
+            o.effectColor = SafespacesUtils.green;
+
+            // set outlines
+            // fixme: cache outlines so we don't need use GetComponent()?
+            for (int i = 0; i < sounds.Length; i++)
+            {
+                if (sounds[i].isPlaying)
+                {
+                    if (i != index)
+                        soundMenu.transform.GetChild(i + 1).GetComponent<Outline>().effectColor = SafespacesUtils.cyan;
+                }
+            }
+        }
+    }
+
+    public void SetAudioVolume()
+    {
+        selectedSound.volume = volumeSlider.value;
     }
 }
