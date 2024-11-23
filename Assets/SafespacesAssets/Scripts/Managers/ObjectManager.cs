@@ -17,7 +17,6 @@ public class ObjectManager : MonoBehaviour
     public GameObject objectMenu;
     public Outline buttonOutline;
 
-    bool objectMenuEnabled = false;
     int objIndex = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +52,7 @@ public class ObjectManager : MonoBehaviour
 
     public void ToggleObjectMode()
     {
-        if (objectMenuEnabled)
+        if (objectMenu.activeSelf)
             DisableObjectMode();
         else
             EnableObjectMode();
@@ -61,7 +60,6 @@ public class ObjectManager : MonoBehaviour
 
     public void EnableObjectMode()
     {
-        objectMenuEnabled = true;
         objectMenu.SetActive(true);
         objectAction.performed += CreateObject;
         buttonOutline.enabled = true;
@@ -69,7 +67,6 @@ public class ObjectManager : MonoBehaviour
 
     public void DisableObjectMode()
     {
-        objectMenuEnabled = false;
         objectMenu.SetActive(false);
         objIndex = -1;
         objectAction.performed -= CreateObject;
