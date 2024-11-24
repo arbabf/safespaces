@@ -33,21 +33,37 @@ public class ObjectManager : MonoBehaviour
         DisableObjectMode();
     }
 
-    // create an object at wherever our left controller is pointing
-    public void CreateObject(InputAction.CallbackContext context)
+    // create/destroy an object at wherever our left controller is pointing
+    public void ObjectModeAction(InputAction.CallbackContext context)
     {
-        if (objIndex < 0 || objIndex >= objSpawner.objectPrefabs.Count)
+        if (objIndex >= objSpawner.objectPrefabs.Count)
             return;
 
-        selectedObject = objSpawner.objectPrefabs[objIndex]; // probs change this if the user wants random spawns
-        objSpawner.spawnOptionIndex = objIndex;
+        if (objIndex == -1)
+        {
+            // destroy object
+            interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
+            Rigidbody rb = raycast.rigidbody;
+            if (rb)
+            {
+                // fixme: this will destroy *anything* with a rigidbody attached to it.
+                // what we really want is to be able to only destroy the spawnable physics objects
+                Destroy(rb.gameObject);
+            }
+        }
+        else
+        {
+            // create object
+            selectedObject = objSpawner.objectPrefabs[objIndex]; // probs change this if the user wants random spawns
+            objSpawner.spawnOptionIndex = objIndex;
 
-        interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
-        Vector3 spawnLocation = raycast.point;
-        // move our object back so it doesn't spawn inside a collider
-        Vector3 extents = selectedObject.GetComponent<Collider>().bounds.extents;
-        spawnLocation += raycast.normal.Multiply(extents);
-        objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
+            interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
+            Vector3 spawnLocation = raycast.point;
+            // move our object back so it doesn't spawn inside a collider
+            Vector3 extents = selectedObject.GetComponent<Collider>().bounds.extents;
+            spawnLocation += raycast.normal.Multiply(extents);
+            objSpawner.TrySpawnObject(spawnLocation, raycast.normal);
+        }
     }
 
     public void ToggleObjectMode()
@@ -61,7 +77,7 @@ public class ObjectManager : MonoBehaviour
     public void EnableObjectMode()
     {
         objectMenu.SetActive(true);
-        objectAction.performed += CreateObject;
+        objectAction.performed += ObjectModeAction;
         buttonOutline.enabled = true;
     }
 
@@ -69,7 +85,7 @@ public class ObjectManager : MonoBehaviour
     {
         objectMenu.SetActive(false);
         objIndex = -1;
-        objectAction.performed -= CreateObject;
+        objectAction.performed -= ObjectModeAction;
         buttonOutline.enabled = false;
 
         // disable all outlines
@@ -81,13 +97,20 @@ public class ObjectManager : MonoBehaviour
 
     public void SetObjectIndex(int index)
     {
-        // set outline
+        // whatever we do we'll need to disable an outline
         if (objIndex != -1)
-        {
             objectMenu.transform.GetChild(objIndex + 1).GetComponent<Outline>().enabled = false;
-        }
-        objectMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = true;
 
-        objIndex = index;
+        if (objIndex == index)
+        {
+            // deselect object
+            objIndex = -1;
+        }
+        else
+        {         
+            // select object
+            objectMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = true;
+            objIndex = index;
+        }
     }
 }
