@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
 
     public void HandleColourMenu()
     {
-        colourManager.ToggleColourPicker();
+        colourManager.ToggleMenu();
         ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
         bubbleManager.DisableBubbleMode();
@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
     public void HandleSoundMenu()
     {
         ambientSoundManager.ToggleMenu();
-        colourManager.DisableColourPicker();
+        colourManager.DisableMenu();
         objectManager.DisableObjectMode();
         bubbleManager.DisableBubbleMode();
     }
@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     public void HandleObjectMenu()
     {
         objectManager.ToggleObjectMode();
-        colourManager.DisableColourPicker();
+        colourManager.DisableMenu();
         ambientSoundManager.DisableMenu();
         bubbleManager.DisableBubbleMode();
     }
@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour
     public void HandleBubbleMode()
     {
         bubbleManager.ToggleBubbleMode();
-        colourManager.DisableColourPicker();
+        colourManager.DisableMenu();
         ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
     }

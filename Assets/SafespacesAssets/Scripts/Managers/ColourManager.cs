@@ -4,36 +4,33 @@ using UnityEngine.UI;
 public class ColourManager : MonoBehaviour
 {
     public GameObject colourPicker;
+    public GameObject colourMenu;
     public Outline buttonOutline;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colourPicker.SetActive(false);
+        colourMenu.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleMenu()
     {
-        
-    }
-
-    public void ToggleColourPicker()
-    {
-        if (colourPicker.activeSelf)
-            DisableColourPicker();
+        if (colourMenu.activeSelf)
+            DisableMenu();
         else
-            EnableColourPicker();
+            EnableMenu();
     }
 
-    public void EnableColourPicker()
+    public void EnableMenu()
     {
+        colourMenu.SetActive(true);
         colourPicker.SetActive(true);
         buttonOutline.enabled = true;
     }
 
-    public void DisableColourPicker()
+    public void DisableMenu()
     {
+        colourMenu.SetActive(false);
         colourPicker.SetActive(false);
         buttonOutline.enabled = false;
     }

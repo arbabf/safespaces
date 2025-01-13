@@ -7,6 +7,7 @@ public class ModifyEnvMaterial : MonoBehaviour
 
     public Material roomMaterial;
     public ColorPicker picker;
+    public GameObject lights;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,14 +20,16 @@ public class ModifyEnvMaterial : MonoBehaviour
 
         picker.onValueChanged.AddListener(color =>
         {
-            roomMaterial.color = color;
+            SetLightColor(color);
         });
-        roomMaterial.color = picker.CurrentColor;
+        //roomMaterial.color = picker.CurrentColor;
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetLightColor(Color color)
     {
-
+        for (int i = 0; i < lights.transform.childCount; i++)
+        {
+            lights.transform.GetChild(i).GetComponent<Light>().color = color;
+        }
     }
 }
