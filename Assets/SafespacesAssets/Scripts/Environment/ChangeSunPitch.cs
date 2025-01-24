@@ -6,9 +6,17 @@ public class ChangeSunPitch : MonoBehaviour
 {
     public Light dlight;
     public Slider volumeSlider;
+
+    Vector3 rot = Vector3.zero;
+    float oldValue;
+
+    void Start()
+    {
+        oldValue = volumeSlider.value;
+    }
     public void SetSunPitch()
     {
-        dlight.transform.localEulerAngles = new Vector3(volumeSlider.value,
-           dlight.transform.localEulerAngles.y, dlight.transform.localEulerAngles.z);
+        rot.x = (volumeSlider.value - oldValue);
+        dlight.transform.Rotate(rot, Space.World);
     }
 }

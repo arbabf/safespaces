@@ -31,7 +31,8 @@ public class ColourManager : MonoBehaviour
 
         foreach (Transform child in envRoom.transform)
         {
-            child.GetComponent<Renderer>().material = materials[0]; // room material
+            if (child.gameObject.name != "Floor")
+                child.GetComponent<Renderer>().material = materials[0]; // room material
         }
 
         colourPicker.onValueChanged.AddListener(color =>
