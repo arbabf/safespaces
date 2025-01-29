@@ -40,6 +40,11 @@ public class SafespacesUtils : MonoBehaviour
     public static Color cyan = new(0, 255, 255, 255); // enabled colour
     public static Color green = new(0, 255, 0, 255); // selected colour
 
+    public static Color sunriseColor = new (255, 161, 108);
+    public static Color noonColor = new(255, 244, 214);
+    public static Color sunsetColor = new(255, 147, 107);
+    public static Color nightColor = new(100, 150, 209);
+
     public static void SetOutlineAlpha(Outline o, float a)
     {
         o.effectColor = new(o.effectColor.r, o.effectColor.g, o.effectColor.b, a);
