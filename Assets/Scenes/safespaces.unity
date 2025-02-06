@@ -2473,11 +2473,11 @@ PrefabInstance:
       objectReference: {fileID: 9046850983997263448}
     - target: {fileID: 2628114327762425108, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleColourMode
+      value: ToggleColorMode
       objectReference: {fileID: 0}
     - target: {fileID: 2628114327762425108, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ColourManager, Assembly-CSharp
+      value: ColorManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2670340151069971288, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4029,11 +4029,11 @@ PrefabInstance:
       objectReference: {fileID: 9046850983997263448}
     - target: {fileID: 5498267901611816813, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleColourMode
+      value: ToggleColorMode
       objectReference: {fileID: 0}
     - target: {fileID: 5498267901611816813, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ColourManager, Assembly-CSharp
+      value: ColorManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5498267901611816813, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4045,11 +4045,11 @@ PrefabInstance:
       objectReference: {fileID: 9046850983997263448}
     - target: {fileID: 5514203796610195246, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleColourMode
+      value: ToggleColorMode
       objectReference: {fileID: 0}
     - target: {fileID: 5514203796610195246, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ColourManager, Assembly-CSharp
+      value: ColorManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5514203796610195246, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4253,7 +4253,7 @@ PrefabInstance:
       objectReference: {fileID: 5127973839183257121}
     - target: {fileID: 6800456813507835951, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HandleColourMenu
+      value: HandleColorMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6800456813507835951, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4353,11 +4353,11 @@ PrefabInstance:
       objectReference: {fileID: 9046850983997263448}
     - target: {fileID: 8246776061820337176, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleColourMode
+      value: ToggleColorMode
       objectReference: {fileID: 0}
     - target: {fileID: 8246776061820337176, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ColourManager, Assembly-CSharp
+      value: ColorManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8246776061820337176, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -7350,7 +7350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299214493147550294, guid: ce7d1181cac53814f95304ed871ba1db, type: 3}
       propertyPath: m_Name
-      value: ColourManager
+      value: ColorManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7377,8 +7377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc19d5c38ca7bf4d8ae7bc9682ce2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colourPicker: {fileID: 1312581758}
-  colourMenu: {fileID: 6381103355203288379}
+  colorPicker: {fileID: 1312581758}
+  colorMenu: {fileID: 6381103355203288379}
   buttonOutline: {fileID: 1286531116}
   materials:
   - {fileID: 2100000, guid: 9de0757c59fcf724981e488e5e167aa4, type: 2}
