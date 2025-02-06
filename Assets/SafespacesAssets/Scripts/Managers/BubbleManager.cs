@@ -11,14 +11,16 @@ public class BubbleManager : MonoBehaviour
 
     private InputAction bubbleAction;
     private Transform bubbleLaunchOrigin;
-    private bool bubbleModeEnabled = false;
-    
+    private InputAction bubbleModeAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
         bubbleAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Activate");
+        bubbleModeAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Primary Button");
+        bubbleModeAction.performed += EnableBubbleMode;
+        bubbleModeAction.canceled += DisableBubbleMode;
         bubbleLaunchOrigin = controller.transform.Find("Poke Interactor");
     }
 
@@ -40,27 +42,15 @@ public class BubbleManager : MonoBehaviour
         Destroy(b, Random.Range(3, 6));
     }
 
-    public void ToggleBubbleMode()
+    public void EnableBubbleMode(InputAction.CallbackContext context)
     {
-        if (bubbleModeEnabled)
-            DisableBubbleMode();
-        else
-            EnableBubbleMode();
-    }
-
-    public void EnableBubbleMode()
-    {
-        bubbleModeEnabled = true;
         bubbleAction.performed += StartBubbleStream;
         bubbleAction.canceled += StopBubbleStream;
-        buttonOutline.enabled = true;
     }
 
-    public void DisableBubbleMode()
+    public void DisableBubbleMode(InputAction.CallbackContext context)
     {
-        bubbleModeEnabled = false;
         bubbleAction.performed -= StartBubbleStream;
         bubbleAction.canceled -= StopBubbleStream;
-        buttonOutline.enabled = false;
     }
 }
