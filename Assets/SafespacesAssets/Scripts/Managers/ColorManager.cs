@@ -4,38 +4,38 @@ using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ColourManager : MonoBehaviour
+public class ColorManager : MonoBehaviour
 {
-    public ColorPicker colourPicker;
-    public GameObject colourMenu;
+    public ColorPicker colorPicker;
+    public GameObject colorMenu;
     public Outline buttonOutline;
     public Material[] materials;
     public GameObject lights;
     public GameObject envRoom;
 
     private int selectedIndex;
-    private enum ColourModes
+    private enum ColorModes
     {
-        COLOUR_ROOM,
-        COLOUR_BALL,
-        COLOUR_BLOCK,
-        COLOUR_LIGHT
+        COLOR_ROOM,
+        COLOR_BALL,
+        COLOR_BLOCK,
+        COLOR_LIGHT
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         selectedIndex = -1;
-        colourMenu.SetActive(false);
-        colourPicker.gameObject.SetActive(false);
+        colorMenu.SetActive(false);
+        colorPicker.gameObject.SetActive(false);
 
-        foreach (Transform child in envRoom.transform)
+        foreach (Renderer child in envRoom.GetComponentsInChildren<Renderer>())
         {
             if (child.gameObject.name != "Floor")
                 child.GetComponent<Renderer>().material = materials[0]; // room material
         }
 
-        colourPicker.onValueChanged.AddListener(color =>
+        colorPicker.onValueChanged.AddListener(color =>
         {
             SetColorFromPicker(color);
         });
@@ -43,7 +43,7 @@ public class ColourManager : MonoBehaviour
 
     public void ToggleMenu()
     {
-        if (colourMenu.activeSelf)
+        if (colorMenu.activeSelf)
             DisableMenu();
         else
             EnableMenu();
@@ -51,40 +51,40 @@ public class ColourManager : MonoBehaviour
 
     public void EnableMenu()
     {
-        colourMenu.SetActive(true);
+        colorMenu.SetActive(true);
         buttonOutline.enabled = true;
     }
 
     public void DisableMenu()
     {
-        colourMenu.SetActive(false);
-        colourPicker.gameObject.SetActive(false);
+        colorMenu.SetActive(false);
+        colorPicker.gameObject.SetActive(false);
         buttonOutline.enabled = false;
     }
 
-    public void ToggleColourMode(int index)
+    public void ToggleColorMode(int index)
     {
         if (index == selectedIndex)
         {
             // double click a button to disable the picker
-            colourPicker.gameObject.SetActive(false);
-            colourMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = false;
+            colorPicker.gameObject.SetActive(false);
+            colorMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = false;
             selectedIndex = -1;
         }
         else
         {    
             // unset outline for previous selection
             if (selectedIndex != -1)
-                colourMenu.transform.GetChild(selectedIndex + 1).GetComponent<Outline>().enabled = false;
+                colorMenu.transform.GetChild(selectedIndex + 1).GetComponent<Outline>().enabled = false;
 
             selectedIndex = index;
 
             // bring up its menu
-            colourPicker.gameObject.SetActive(true);
-            colourPicker.CurrentColor = GetColorForIndex(index);
+            colorPicker.gameObject.SetActive(true);
+            colorPicker.CurrentColor = GetColorForIndex(index);
 
             // set outline for new selection
-            Outline o = colourMenu.transform.GetChild(index + 1).GetComponent<Outline>();
+            Outline o = colorMenu.transform.GetChild(index + 1).GetComponent<Outline>();
             o.enabled = true;
             o.effectColor = SafespacesUtils.green;
         }
@@ -94,7 +94,7 @@ public class ColourManager : MonoBehaviour
     {
         Color c = new Color(0,0,0);
 
-        if (index != (int)ColourModes.COLOUR_LIGHT)
+        if (index != (int)ColorModes.COLOR_LIGHT)
         {
             c = materials[index].color;
         }
@@ -108,7 +108,7 @@ public class ColourManager : MonoBehaviour
 
     public void SetColorFromPicker(Color color)
     {
-        if (selectedIndex != (int)ColourModes.COLOUR_LIGHT)
+        if (selectedIndex != (int)ColorModes.COLOR_LIGHT)
         {
             materials[selectedIndex].color = color;
         }

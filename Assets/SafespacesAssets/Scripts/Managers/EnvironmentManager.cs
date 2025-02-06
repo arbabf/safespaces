@@ -71,6 +71,7 @@ public class EnvironmentManager : MonoBehaviour
         }
     }
 
+    // Attach an object to our ray interactor for moving capability.
     public void AttachObject(XRSimpleInteractable interactable)
     {
         attachedObject = interactable.gameObject;
@@ -104,7 +105,7 @@ public class EnvironmentManager : MonoBehaviour
             }
         }
 
-        // disable ray interactor raycasts hitting this object
+        // disable raycasts on this object so it doesn't get hit by the ray interactor when moving this object
         int layer = LayerMask.NameToLayer("Ignore Raycast");
         attachedObject.layer = layer;
         foreach (Transform child in attachedObject.transform)
@@ -144,7 +145,6 @@ public class EnvironmentManager : MonoBehaviour
             }
         }
 
-        // re-enable ray interactor raycasts hitting this object
         int layer = LayerMask.NameToLayer("Default");
         attachedObject.layer = layer;
         foreach (Transform child in attachedObject.transform)

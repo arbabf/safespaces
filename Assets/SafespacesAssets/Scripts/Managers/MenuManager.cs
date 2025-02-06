@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    private ColourManager colourManager;
+    private ColorManager colorManager;
     private AmbientSoundManager ambientSoundManager;
     private ObjectManager objectManager;
     private BubbleManager bubbleManager;
@@ -10,15 +10,15 @@ public class MenuManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colourManager = GameObject.Find("ColourManager").GetComponent<ColourManager>();
+        colorManager = GameObject.Find("ColorManager").GetComponent<ColorManager>();
         ambientSoundManager = GameObject.Find("AmbientSoundManager").GetComponent<AmbientSoundManager>();
         objectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
         bubbleManager = GameObject.Find("BubbleManager").GetComponent<BubbleManager>();
     }
 
-    public void HandleColourMenu()
+    public void HandleColorMenu()
     {
-        colourManager.ToggleMenu();
+        colorManager.ToggleMenu();
         ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
         bubbleManager.DisableBubbleMode();
@@ -27,7 +27,7 @@ public class MenuManager : MonoBehaviour
     public void HandleSoundMenu()
     {
         ambientSoundManager.ToggleMenu();
-        colourManager.DisableMenu();
+        colorManager.DisableMenu();
         objectManager.DisableObjectMode();
         bubbleManager.DisableBubbleMode();
     }
@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     public void HandleObjectMenu()
     {
         objectManager.ToggleObjectMode();
-        colourManager.DisableMenu();
+        colorManager.DisableMenu();
         ambientSoundManager.DisableMenu();
         bubbleManager.DisableBubbleMode();
     }
@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour
     public void HandleBubbleMode()
     {
         bubbleManager.ToggleBubbleMode();
-        colourManager.DisableMenu();
+        colorManager.DisableMenu();
         ambientSoundManager.DisableMenu();
         objectManager.DisableObjectMode();
     }

@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 1136158266041967643}
   - component: {fileID: 2348209242022596594}
   m_Layer: 0
-  m_Name: ColourMenu
+  m_Name: ColorMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
