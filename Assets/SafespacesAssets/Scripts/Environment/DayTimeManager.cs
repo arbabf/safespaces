@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeDayTime : MonoBehaviour
+public class DayTimeManager : MonoBehaviour
 {
     public Light dlight;
-    public Slider daySlider;
+    public GameObject dayTimeMenu;
+    public Outline buttonOutline;
 
     enum DayTimes
     {
@@ -14,11 +15,36 @@ public class ChangeDayTime : MonoBehaviour
         DAY_NIGHT
     }
 
-    public void SetTimeOfDay()
+    void Start()
+    {
+        DisableMenu();
+    }
+
+    public void ToggleMenu()
+    {
+        if (dayTimeMenu.activeSelf)
+            DisableMenu();
+        else
+            EnableMenu();
+    }
+
+    public void EnableMenu()
+    {
+        dayTimeMenu.SetActive(true);
+        buttonOutline.enabled = true;
+    }
+
+    public void DisableMenu()
+    {
+        dayTimeMenu.SetActive(false);
+        buttonOutline.enabled = false;
+    }
+
+    public void SetTimeOfDay(int dayPhase)
     {
         Quaternion rot = Quaternion.Euler(0,0,0);
 
-        switch ((DayTimes)daySlider.value)
+        switch ((DayTimes)dayPhase)
         {
             case DayTimes.DAY_DAWN:
                 rot = Quaternion.Euler(5, -75, 0);

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8253566088998753672}
+  - component: {fileID: 2439858252462432674}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -31,3 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2439858252462432674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436970046742987079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51121cfe75c858c498386228b81e176c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorManager: {fileID: 0}
+  ambientSoundManager: {fileID: 0}
+  objectManager: {fileID: 0}
+  wristMenu1: {fileID: 0}
+  wristMenu2: {fileID: 0}

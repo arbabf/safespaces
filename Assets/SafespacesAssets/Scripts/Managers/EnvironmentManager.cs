@@ -63,10 +63,17 @@ public class EnvironmentManager : MonoBehaviour
         else
         {
             interactor.TryGetCurrent3DRaycastHit(out RaycastHit raycast);
-            XRSimpleInteractable obj = raycast.transform.root.gameObject.GetComponent<XRSimpleInteractable>();
-            if (obj && (obj.interactionLayers.value & 1 << 2) > 0)
+            if (raycast.transform)
             {
-                AttachObject(obj);
+                GameObject gameObject = raycast.transform.root.gameObject;
+                if (gameObject)
+                {
+                    XRSimpleInteractable obj = gameObject.GetComponent<XRSimpleInteractable>();
+                    if (obj && (obj.interactionLayers.value & 1 << 2) > 0)
+                    {
+                        AttachObject(obj);
+                    }
+                }
             }
         }
     }

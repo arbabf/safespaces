@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// TODO: rework this, this no longer needs to be its own file
+
 public class ToggleWristMenu : MonoBehaviour
 {
     public InputActionAsset inputActions;
@@ -14,15 +16,15 @@ public class ToggleWristMenu : MonoBehaviour
         wristMenuCanvas = GetComponent<Canvas>();
         // Change when we start using a proper controller instead of kb/m
         //menu = inputActions.FindActionMap("XRI Left Interaction").FindAction("Menu");
-        menu = inputActions.FindActionMap("Controller").FindAction("Menu");
-        menu.Enable();
-        menu.performed += ToggleMenu;
+        //menu = inputActions.FindActionMap("Controller").FindAction("Menu");
+        //menu.Enable();
+        //menu.performed += ToggleMenu;
     }
 
     private void OnDestroy()
     {
-        menu.Disable();
-        menu.performed -= ToggleMenu;
+        //menu.Disable();
+        //menu.performed -= ToggleMenu;
     }
     
     public void ToggleMenu(InputAction.CallbackContext context)

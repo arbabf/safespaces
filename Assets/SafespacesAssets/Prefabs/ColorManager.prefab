@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 44651883442447005}
+  - component: {fileID: 5149770199613298891}
   m_Layer: 5
   m_Name: ColorManager
   m_TagString: Untagged
@@ -35,3 +36,24 @@ RectTransform:
   m_AnchoredPosition: {x: -14929.272, y: 21931.508}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5149770199613298891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299214493147550294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc19d5c38ca7bf4d8ae7bc9682ce2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorPicker: {fileID: 0}
+  colorMenu: {fileID: 0}
+  buttonOutline: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 9de0757c59fcf724981e488e5e167aa4, type: 2}
+  - {fileID: 2100000, guid: bcf885dbc4283e74d9fd079e7ad75f43, type: 2}
+  - {fileID: 2100000, guid: 2a82c5f8ee884fc4aabe449a83a4d586, type: 2}
+  lights: {fileID: 0}
+  envRoom: {fileID: 0}

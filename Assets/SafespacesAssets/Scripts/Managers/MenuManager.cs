@@ -1,19 +1,35 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class MenuManager : MonoBehaviour
 {
-    private ColorManager colorManager;
-    private AmbientSoundManager ambientSoundManager;
-    private ObjectManager objectManager;
+    public ColorManager colorManager;
+    public AmbientSoundManager ambientSoundManager;
+    public ObjectManager objectManager;
+    public DayTimeManager dayTimeManager;
+    public GameObject wristMenu1;
+    public GameObject wristMenu2;
+    public GameObject xrOrigin;
+
+    private InputAction menuAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorManager = GameObject.Find("ColorManager").GetComponent<ColorManager>();
-        ambientSoundManager = GameObject.Find("AmbientSoundManager").GetComponent<AmbientSoundManager>();
-        objectManager = GameObject.Find("ObjectManager").GetComponent<ObjectManager>();
+        wristMenu1.SetActive(true);
+        wristMenu2.SetActive(false);
+
+        InputActionAsset inputActions = xrOrigin.GetComponent<InputActionManager>().actionAssets[0];
+        menuAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Secondary Button");
+        menuAction.performed += SwitchMenus;
     }
 
+    /*
+     * Primary menu --- menu 1
+     * Handles colour, sound, objects, and environment.
+     * Default menu.
+     */
     public void HandleColorMenu()
     {
         colorManager.ToggleMenu();
@@ -35,10 +51,31 @@ public class MenuManager : MonoBehaviour
         ambientSoundManager.DisableMenu();
     }
 
-    public void HandleBubbleMode()
+    public void SwitchMenus(InputAction.CallbackContext context)
     {
-        colorManager.DisableMenu();
-        ambientSoundManager.DisableMenu();
-        objectManager.DisableObjectMode();
+        wristMenu1.SetActive(!wristMenu1.activeSelf);
+        wristMenu2.SetActive(!wristMenu2.activeSelf);
+
+        if (!wristMenu1.activeSelf)
+        {
+            // call each individual disable function so that we don't have a menu jumpscare when switching with multiple levels of menu
+            colorManager.DisableMenu();
+            ambientSoundManager.DisableMenu();
+            objectManager.DisableObjectMode();
+        }
+        else
+        {
+
+        }
+    }
+
+    /*
+     * Secondary menu --- menu 2
+     * Handles time of day, furniture, and animals.
+     * Not the default menu.
+     */
+    public void HandleDayTimeMenu()
+    {
+        dayTimeManager.ToggleMenu();
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3434744847952214780}
   - component: {fileID: 7523321029122240705}
   m_Layer: 0
-  m_Name: LightManager
+  m_Name: DayTimeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

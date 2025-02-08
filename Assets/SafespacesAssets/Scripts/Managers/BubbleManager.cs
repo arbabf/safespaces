@@ -7,7 +7,7 @@ public class BubbleManager : MonoBehaviour
 {
     public GameObject bubble;
     public GameObject controller;
-    public Outline buttonOutline;
+    public GameObject xrOrigin;
 
     private InputAction bubbleAction;
     private Transform bubbleLaunchOrigin;
@@ -16,7 +16,7 @@ public class BubbleManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
+        InputActionAsset inputActions = xrOrigin.GetComponent<InputActionManager>().actionAssets[0];
         bubbleAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Activate");
         bubbleModeAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Primary Button");
         bubbleModeAction.performed += EnableBubbleMode;
