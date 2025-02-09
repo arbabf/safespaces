@@ -15,8 +15,13 @@ public class EnvironmentManager : MonoBehaviour
     public XRRayInteractor interactor;
 
     private InputAction moveAction;
+    private InputAction cancelAction;
+
     private bool roomActive;
+
     private GameObject attachedObject;
+    private Vector3 origPosition;
+    private Quaternion origRotation;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +32,7 @@ public class EnvironmentManager : MonoBehaviour
 
         InputActionAsset inputActions = GameObject.Find("XR Origin (XR Rig)").GetComponent<InputActionManager>().actionAssets[0];
         moveAction = inputActions.FindActionMap("XRI Right Interaction").FindAction("Activate");
+        cancelAction = inputActions.FindActionMap("XRI Right Interaction").FindAction("Secondary Button");
         moveAction.performed += MoveObject;
     }
 
@@ -78,10 +84,25 @@ public class EnvironmentManager : MonoBehaviour
         }
     }
 
+    public void CancelMove(InputAction.CallbackContext context)
+    {
+        if (attachedObject)
+        {
+            attachedObject.transform.position = origPosition;
+            attachedObject.transform.rotation = origRotation;
+            DetachObject();
+        }
+    }
+
     // Attach an object to our ray interactor for moving capability.
     public void AttachObject(XRSimpleInteractable interactable)
     {
         attachedObject = interactable.gameObject;
+
+        origPosition = attachedObject.transform.position;
+        origRotation = attachedObject.transform.rotation;
+
+        cancelAction.performed += CancelMove;
 
         foreach (Renderer renderer in attachedObject.gameObject.GetComponentsInChildren<Renderer>())
         {
@@ -160,5 +181,7 @@ public class EnvironmentManager : MonoBehaviour
         }
 
         attachedObject = null;
+
+        cancelAction.performed -= CancelMove;
     }
 }
