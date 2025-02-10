@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public AmbientSoundManager ambientSoundManager;
     public ObjectManager objectManager;
     public DayTimeManager dayTimeManager;
+    public PetManager petManager;
     public GameObject wristMenu1;
     public GameObject wristMenu2;
     public GameObject xrOrigin;
@@ -65,7 +66,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-
+            dayTimeManager.DisableMenu();
+            petManager.DisableMenu();
         }
     }
 
@@ -77,5 +79,12 @@ public class MenuManager : MonoBehaviour
     public void HandleDayTimeMenu()
     {
         dayTimeManager.ToggleMenu();
+        petManager.DisableMenu();
+    }
+
+    public void HandlePetMenu()
+    {
+        petManager.ToggleMenu();
+        dayTimeManager.DisableMenu();
     }
 }
