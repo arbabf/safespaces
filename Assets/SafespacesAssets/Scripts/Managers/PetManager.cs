@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,13 +39,14 @@ public class PetManager : MonoBehaviour
         buttonOutline.enabled = false;
     }
 
-    public void SetPet(int pet)
+    public void SetPet(int index)
     {
         // todo: don't run any of this code if the player has a gameobject selected, we can narrow it down to a bed later
-        if (currPet == pet)
+        if (currPet == index)
         {
-            pets[pet].SetActive(false);
+            pets[index].SetActive(false);
             bed.SetActive(false);
+            petMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = false;
             currPet = -1;
         }
         else
@@ -52,10 +54,16 @@ public class PetManager : MonoBehaviour
             if (currPet != -1)
                 pets[currPet].SetActive(false);
 
-            pets[pet].SetActive(true);
+            pets[index].SetActive(true);
             bed.SetActive(true);
-            // outline here
-            currPet = pet;
+
+            // unset outline for previous selection
+            if (currPet != -1)
+                petMenu.transform.GetChild(currPet + 1).GetComponent<Outline>().enabled = false;
+
+            petMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = true;
+
+            currPet = index;
         }
     }
 }
