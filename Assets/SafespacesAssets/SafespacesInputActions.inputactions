@@ -337,6 +337,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Activate",
+                    "type": "Button",
+                    "id": "e3337c3d-cb9d-438c-809a-550f62b34f8d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Rotation",
                     "type": "Value",
                     "id": "cb6b7130-2bac-4ef7-abe4-6991ae7d419d",
@@ -452,6 +461,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Primary Button",
+                    "type": "Button",
+                    "id": "e1737393-fce3-4965-b5a9-6e65612a8281",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Secondary Button",
+                    "type": "Button",
+                    "id": "03d03c94-735a-44c4-ad7c-e69e1cdb3c02",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -542,6 +569,17 @@
                     "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9cac9314-6972-4f0c-be8b-c86a10e87ba4",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -859,6 +897,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Thumbstick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "946dfb4e-75d7-46c2-8979-6b5125c9b69a",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44e3bf89-7b1e-4e71-9dd7-0e8bf7c4ddfd",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Secondary Button",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
