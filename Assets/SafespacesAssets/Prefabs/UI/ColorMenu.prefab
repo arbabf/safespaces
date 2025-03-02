@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 7945989890399337609}
   - component: {fileID: 1136158266041967643}
   - component: {fileID: 2348209242022596594}
+  - component: {fileID: 6633990031422510510}
   m_Layer: 0
   m_Name: ColorMenu
   m_TagString: Untagged
@@ -962,6 +963,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6633990031422510510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793094980491519810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &7202921223050360661
 GameObject:
   m_ObjectHideFlags: 0
