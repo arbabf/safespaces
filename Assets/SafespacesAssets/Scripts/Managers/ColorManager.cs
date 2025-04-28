@@ -12,6 +12,7 @@ public class ColorManager : MonoBehaviour
     public Material[] materials;
     public GameObject lights;
     public GameObject envRoom;
+    public Material lightShadeMaterial;
 
     private int selectedIndex;
     private enum ColorModes
@@ -29,11 +30,7 @@ public class ColorManager : MonoBehaviour
         colorMenu.SetActive(false);
         colorPicker.gameObject.SetActive(false);
 
-        foreach (Renderer child in envRoom.GetComponentsInChildren<Renderer>())
-        {
-            if (child.gameObject.name != "Floor")
-                child.GetComponent<Renderer>().material = materials[0]; // room material
-        }
+        lightShadeMaterial.color = lights.transform.GetChild(0).GetComponent<Light>().color;
 
         colorPicker.onValueChanged.AddListener(color =>
         {
@@ -117,6 +114,7 @@ public class ColorManager : MonoBehaviour
             for (int i = 0; i < lights.transform.childCount; i++)
             {
                 lights.transform.GetChild(i).GetComponent<Light>().color = color;
+                lightShadeMaterial.color = color;
             }
         }
     }
