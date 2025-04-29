@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 7133937235283048068}
   - component: {fileID: 546737065325495459}
   - component: {fileID: 3535756800413046499}
+  - component: {fileID: 8371765856606113913}
   m_Layer: 0
   m_Name: VolumeSliderMenu
   m_TagString: Untagged
@@ -454,6 +455,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8371765856606113913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3421791427909593881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &6508566859528958350
 GameObject:
   m_ObjectHideFlags: 0
