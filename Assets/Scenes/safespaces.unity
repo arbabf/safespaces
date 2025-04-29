@@ -14419,6 +14419,7 @@ GameObject:
   - component: {fileID: 1321042213}
   - component: {fileID: 1321042212}
   - component: {fileID: 1321042211}
+  - component: {fileID: 1321042214}
   m_Layer: 0
   m_Name: Int_WallNew_01 (1)
   m_TagString: Untagged
@@ -14494,6 +14495,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4768980345264017622}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1321042214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321042210}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 4, z: 0.10000038}
+  m_Center: {x: 0.0000019073486, y: 2, z: 1.1999999}
 --- !u!1001 &1321270712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17824,8 +17846,8 @@ GameObject:
   - component: {fileID: 1526565688}
   - component: {fileID: 1526565691}
   - component: {fileID: 1526565690}
-  - component: {fileID: 1526565689}
   - component: {fileID: 1526565692}
+  - component: {fileID: 1526565693}
   m_Layer: 0
   m_Name: water (1)
   m_TagString: Untagged
@@ -17848,29 +17870,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1958770437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1526565689
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1526565687}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1526565690
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18482,6 +18481,27 @@ MonoBehaviour:
   m_SkinMeshRef: {fileID: 0}
   m_OriginalMeshObject: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   m_Mode: 0
+--- !u!65 &1526565693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526565687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000005, y: 2, z: 1}
+  m_Center: {x: 0.00000029802325, y: -3, z: -0.000000029802365}
 --- !u!1 &1531572140
 GameObject:
   m_ObjectHideFlags: 0
@@ -18493,6 +18513,7 @@ GameObject:
   - component: {fileID: 1531572143}
   - component: {fileID: 1531572142}
   - component: {fileID: 1531572141}
+  - component: {fileID: 1531572144}
   m_Layer: 0
   m_Name: Int_WallNew_01 (2)
   m_TagString: Untagged
@@ -18568,6 +18589,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4768980345264017622}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1531572144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531572140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 4, z: 0.10000038}
+  m_Center: {x: 0.0000019073486, y: 2, z: 1.1999999}
 --- !u!1001 &1533921025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30415,7 +30457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795629983987968573, guid: c165dedfe8f2b714db7487691aca26c8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5937425904256023303, guid: c165dedfe8f2b714db7487691aca26c8, type: 3}
       propertyPath: m_Mesh
@@ -32457,6 +32499,7 @@ GameObject:
   - component: {fileID: 1925037531}
   - component: {fileID: 1925037530}
   - component: {fileID: 1925037529}
+  - component: {fileID: 1925037532}
   m_Layer: 0
   m_Name: Int_WallNew_01
   m_TagString: Untagged
@@ -32532,6 +32575,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4768980345264017622}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1925037532
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925037528}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 4, z: 0.10000038}
+  m_Center: {x: 0.0000019073486, y: 2, z: 1.1999999}
 --- !u!43 &1926506219
 Mesh:
   m_ObjectHideFlags: 0
@@ -33017,6 +33081,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: b8072193132ec0148a9a6c62cb453b42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2061546179}
+    - targetCorrespondingSourceObject: {fileID: -8391222552659086748, guid: b8072193132ec0148a9a6c62cb453b42, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2061546183}
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: b8072193132ec0148a9a6c62cb453b42, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1708131939}
@@ -33604,6 +33671,7 @@ GameObject:
   - component: {fileID: 2017581444}
   - component: {fileID: 2017581443}
   - component: {fileID: 2017581442}
+  - component: {fileID: 2017581445}
   m_Layer: 0
   m_Name: Int_WallNew_01 (3)
   m_TagString: Untagged
@@ -33679,6 +33747,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4768980345264017622}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &2017581445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017581441}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 4, z: 0.10000038}
+  m_Center: {x: 0.0000019073486, y: 2, z: 1.1999999}
 --- !u!1001 &2020578911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35452,6 +35541,27 @@ MonoBehaviour:
   m_SkinMeshRef: {fileID: 0}
   m_OriginalMeshObject: {fileID: -5495902117074765545, guid: b8072193132ec0148a9a6c62cb453b42, type: 3}
   m_Mode: 0
+--- !u!65 &2061546183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061546177}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000009, y: 0.020000009, z: 0.019999996}
+  m_Center: {x: 0.000000006519258, y: 0, z: 0}
 --- !u!114 &2065901881 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2417358720014700305, guid: 27024f5809f4a4347b9cd7f26a1bdf93, type: 3}
@@ -37366,7 +37476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6951278982176469575, guid: ffdfe6bd0dcd8ba4d918216507f0d78e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7420935612242040292, guid: ffdfe6bd0dcd8ba4d918216507f0d78e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
