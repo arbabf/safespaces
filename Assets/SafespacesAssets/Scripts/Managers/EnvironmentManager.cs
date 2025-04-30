@@ -48,6 +48,8 @@ public class EnvironmentManager : MonoBehaviour
                 attachedObject.transform.position = raycast.point;
                 Vector3 angles = attachedObject.transform.eulerAngles;
                 angles.y = interactor.rayOriginTransform.eulerAngles.y;
+                // furniture hack
+                angles.y += 90;
                 attachedObject.transform.eulerAngles = angles;
             }
         }
