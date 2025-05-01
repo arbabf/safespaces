@@ -1,6 +1,4 @@
 using HSVPicker;
-using System;
-using UnityEditor.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
 
