@@ -54,9 +54,13 @@ public class ColorManager : MonoBehaviour
 
     public void DisableMenu()
     {
-        colorMenu.SetActive(false);
-        colorPicker.gameObject.SetActive(false);
-        buttonOutline.enabled = false;
+        // disable our selected colour mode by selecting its index
+        if (colorMenu.activeSelf)
+        {
+            colorMenu.SetActive(false);
+            ToggleColorMode(selectedIndex);
+            buttonOutline.enabled = false;
+        }
     }
 
     public void ToggleColorMode(int index)
@@ -65,7 +69,9 @@ public class ColorManager : MonoBehaviour
         {
             // double click a button to disable the picker
             colorPicker.gameObject.SetActive(false);
-            colorMenu.transform.GetChild(index + 1).GetComponent<Outline>().enabled = false;
+            Outline line = colorMenu.transform.GetChild(index + 1).GetComponent<Outline>();
+            if (line)
+                line.enabled = false;
             selectedIndex = -1;
         }
         else

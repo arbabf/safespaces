@@ -37,7 +37,7 @@ public class SafespacesUtils : MonoBehaviour
         }
     }
 
-    public static Color cyan = new(0, 255, 255, 255); // enabled colour
+    public static Color cyan = new(0, 255, 50, 255); // enabled colour
     public static Color green = new(0, 255, 0, 255); // selected colour
 
     public static Color sunriseColor = new (255, 161, 108);

@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour
 
     private InputAction menuAction;
     private InputAction toggleMenuAction;
-    // we need to keep track of which wrist menu is active for the ToggleMenu function
     private GameObject currentMenu;
     private bool menuActive;
 
@@ -31,8 +30,6 @@ public class MenuManager : MonoBehaviour
         InputActionAsset inputActions = xrOrigin.GetComponent<InputActionManager>().actionAssets[0];
         menuAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Secondary Button");
         toggleMenuAction = inputActions.FindActionMap("XRI Left Interaction").FindAction("Menu");
-        //menu = inputActions.FindActionMap("Controller").FindAction("Menu");
-        //menu.Enable();
 
         menuAction.performed += SwitchMenus;
         toggleMenuAction.performed += ToggleMenu;
